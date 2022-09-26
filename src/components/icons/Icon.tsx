@@ -1,11 +1,13 @@
 import { IconLayer } from './layer';
 import { IconLocation } from './location';
 import { IconTextLeft } from './textLeft';
+import { IconGpsFixed } from './gpsFixed';
 
 interface Icons {
     location: JSX.Element;
     layer: JSX.Element;
     textLeft: JSX.Element;
+    gpsFixed: JSX.Element;
 
 }
 export type Icon = keyof Icons;
@@ -23,7 +25,9 @@ export const Icon = ({ name, classFill = '' }: Props) => {
         location: <IconLocation classFill={classFill} />,
         layer: <IconLayer classFill={classFill} />,
         textLeft: <IconTextLeft classFill={classFill} />,
+        gpsFixed: <IconGpsFixed />,
     }
+    
     return (!!name)
         ? icons[name]
         : icons['location'];
