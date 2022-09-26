@@ -1,70 +1,224 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+/* Aquí definimos las Custom properties */
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
+  /* Typography */
+  --font-sans: 'Open Sans', sans-serif;
+  --font-size-base: 1rem;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --fz-1: calc(var(--font-size-base) * 2.5);
+  --fz-2: calc(var(--font-size-base) * 2);
+  --fz-3: calc(var(--font-size-base) * 1.75);
+  --fz-4: calc(var(--font-size-base) * 1.5);
+  --fz-5: calc(var(--font-size-base) * 1.25);
+  --fz-6: var(--font-size-base);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  --fw-lighter: 200;
+  --fw-light: 300;
+  --fw-normal: 400;
+  --fw-bold: 700;
+  --fw-bolder: 900;
+
+  --line-height-base: 1.5;
+  --line-height-sm: 1.25;
+  --line-height-lg: 2;
+
+  --black: #393939;
+  --icon-nav-color: #927BEF;
+  --header-bg-color: #FFFFFF;
+  --nav-bg-color: #000000;
+  --navy-shadow: rgba(2, 12, 27, 0.7);
+  --pages-bg-color: #F4F4F4;
+  --white: #e6f1ff;
+  --text-color: #262626;
+  --text-info-color: #7D7D7D;
+
+  --border-radius: 4px;
+  --header-height: 95px;
+  --nav-heigth-sm: 200px;
+  --nav-width: 363px;
+
+  --hamburger-width: 30px;
+  --padding-resposive: 25px;
+  --corner-base: 100px;
+
+  --z-index-2: 200;
+  --z-index-4: 400;
+  --z-index-6: 600;
+  --z-index-8: 800;
+  --z-index-10: 1000;
+
+  --breakpoint-phones: 576px;
+  --breakpoint-tablets: 768px;
+  --breakpoint-desktops: 992px;
+  --breakpoint-largeDesktops: 1200px;
+  --breakpoint-xxl: 1440px;
+  --breakpoint-fhd: 1920px;
+
+  --transition-def: all 0.3s ease-in-out;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* Opcional */
+/* Configuramos si un usuario ha activado el modo alto contraste. (WD) */
+/* Opcional */
+/* Desactivamos los animations en el caso de que el usuario haya configurado el modo sin animation */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation: none !important;
+    animation: none !important;
+    -webkit-transition: none !important;
+    transition: none !important;
+  }
 }
 
-body {
+/* Reseteamos los margin y paddings de todas las etiquetas */
+* {
   margin: 0;
+  padding: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  vertical-align: baseline;
+}
+
+/* Evitamos problemas con las imagenes */
+img,
+picture,
+video,
+iframe,
+figure {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+}
+
+/* Reseteamos los enlaces para funcionar como cajas... */
+a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* ... excepto los que se encuentran en párrafos */
+p a {
+  display: inline;
+}
+
+/* Quitamos los puntos de los <li> */
+li {
+  list-style-type: none;
+}
+
+/* Configuramos anclas suaves */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Desactivamos estilos por defecto de las principales etiquetas de texto */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+strong,
+blockquote,
+i,
+b,
+u,
+em {
+  font-size: 1em;
+  font-weight: inherit;
+  font-style: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Evitamos problemas con los pseudoelementos de quotes */
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+/* Configuramos el texto que seleccionamos */
+::-moz-selection {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+::selection {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+/* Nivelamos problemas de tipografías y colocación de formularios */
+form,
+input,
+textarea,
+select,
+button,
+label {
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+  background-color: transparent;
+  color: inherit;
+  display: block;
+  /* opcional */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Reseteamos las tablas */
+table,
+tr,
+td {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Evitamos problemas con los SVG */
+svg {
+  width: 100%;
+  display: block;
+  fill: currentColor;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+/* Configuramos la tipografía para toda la web */
+body {
+  background-color: var(--pages-bg-color);
+  color: var(--text-color);
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  font-family: var(--font-sans);
+  font-size: 100%;
+  justify-content: center;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
