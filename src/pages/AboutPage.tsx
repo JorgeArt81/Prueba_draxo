@@ -1,7 +1,9 @@
-import React from 'react'
+import { PageInfo } from '@/components'
 
 export const AboutPage = () => {
     return (
-        <div>AboutPage</div>
+        <>
+            <PageInfo className='info-show' />
+        </>
     )
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { customMediaQuery } from './mediaQuery';
+import { customMediaQuery } from "./mediaQuery";
 
 export const NavBarStyles = styled.nav`
   background-color: var(--nav-bg-color);
@@ -9,7 +9,7 @@ export const NavBarStyles = styled.nav`
 
   .links-container {
     position: relative;
-    margin:30px 0px;
+    margin: 30px 0px;
   }
 
   .navlink {
@@ -26,9 +26,9 @@ export const NavBarStyles = styled.nav`
       transition: var(--transition-def);
     }
 
-    .name{
-      position:relative;
-      top:-4px;
+    .name {
+      position: relative;
+      top: -4px;
     }
   }
 
@@ -47,10 +47,10 @@ export const NavBarStyles = styled.nav`
     width: 2px;
   }
 
-  li:last-child .line::after{
-    background-color:transparent;
+  li:last-child .line::after {
+    display: none;
   }
-  
+
   .nav-active {
     color: var(--icon-nav-color);
     .icon {
@@ -64,7 +64,52 @@ export const NavBarStyles = styled.nav`
     width: 320px;
   }
 
-  ${customMediaQuery("min-width", "tablets")} {
-    
+  /* Media query */
+  ${customMediaQuery("max-width", "tablets")} {
+    background-color: var(--header-bg-color);
+    display: flex;
+    justify-content: center;
+    padding-top:0px;
+    width: 100%;
+
+    .top-line {
+      display: none;
+    }
+
+    .links-container {
+      margin: 0px;
+    }
+
+    ul {
+      display: flex;
+    }
+
+    .navlink {
+      /* max-width:140px; */
+      .icon {
+        margin: 0px;
+        max-width: 40px;
+      }
+      .name {
+        display: none;
+      }
+    }
+
+    .line {
+      flex-direction: row;
+    }
+
+    .line::after {
+      background-color: var(--text-color);
+      content: "";
+      display: block;
+      height: 2px;
+      width: 103px;
+      margin: 0;
+    }
+
+    li:last-child .line::after {
+      display: none;
+    }
   }
 `;

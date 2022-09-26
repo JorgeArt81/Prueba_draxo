@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { customMediaQuery } from './mediaQuery';
 
 export const HeaderStyled = styled.header`
   
@@ -18,18 +19,19 @@ export const HeaderStyled = styled.header`
         }
     }
 
-    .info-container{
-        margin-left:28px;
-    }
+    
+    ${customMediaQuery("max-width", "tablets")} {
+        --header-height:76px;
 
-    .page-name{
-        font-size:24px;
-        font-weight:var(--fw-bold);
+        .info-show-mb{
+            display:none;
+        }
+
+        .logo{      
+        img{
+            max-height:48px;
+        }
     }
-    .page-info{
-        color:var(--text-info-color);
-        font-size:16px;
-        font-style:italic;
-    }
+  }
 
 `;

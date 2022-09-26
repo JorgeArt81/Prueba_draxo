@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { Header, Navigation } from './components';
+import { Header, Navigation, PageInfo } from './components';
 import { routes } from './routes';
-import { ContentContainer } from './styled-components';
+import { ContentContainerStyled } from './styled-components';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Header />
-        <ContentContainer>
+        <ContentContainerStyled>
           <Navigation />
           <Routes>
             {
@@ -19,7 +19,7 @@ function App() {
             }
             <Route path='/*' element={<Navigate to='/mapa' />} />
           </Routes>
-        </ContentContainer>
+        </ContentContainerStyled>
       </BrowserRouter>
     </>
   )

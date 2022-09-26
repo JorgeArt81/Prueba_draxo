@@ -1,3 +1,2 @@
-export * from './ContentContainder';
+export * from './ContentContainder.styled';
 export * from './LayoutContainer.styled';
-export * from './index';
