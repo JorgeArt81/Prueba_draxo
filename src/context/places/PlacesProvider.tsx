@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 
+import { useHouseList } from '@/hooks';
 import { PlacesState } from '@/models/context';
 import { getUserLocation } from '@/utilities';
+import { House } from '../../models/modernHouse';
 import { PlacesContext } from './PlacesContext';
 import { placesReducer } from './placesReducer';
-import { useHouseList } from '@/hooks';
-import { House } from '../../models/modernHouse';
 
 const INITIAL_STATE: PlacesState = {
     isLoading: true,
@@ -30,12 +30,29 @@ export const PlacesProvider = ({ children }: Props) => {
     }, [])
 
     useEffect(() => {
+        dispatch({ type: 'setIsLoading', payload: true });
         dispatch({ type: 'setListLocations', payload: listValues as House[] })
+
+        const timer = setTimeout(() => {
+            dispatch({ type: 'setIsLoading', payload: false });
+        }, 1000);
+
+        return () => {
+            clearTimeout(timer)
+        }
     }, [listValues.length > 0])
 
-    
+    const setLocation = (coords: GeolocationCoordinates) => {
+        dispatch({ type: 'setUserLocation', payload: coords });
+    }
+
     return (
-        <PlacesContext.Provider value={{ ...state }}>
+        <PlacesContext.Provider value={{
+            ...state,
+
+            // Methods
+            setLocation
+        }}>
             {children}
         </PlacesContext.Provider>
     )

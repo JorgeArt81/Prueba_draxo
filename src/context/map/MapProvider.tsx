@@ -38,8 +38,11 @@ export const MapProvider = ({ children }: Props) => {
             <h4>${house.number}}</h4>
         `);
 
-            console.log([house.location.longitude, house.location.latitude])
-            const marker = new Marker()
+            const customMarker = document.createElement('div');
+            customMarker.className = 'marker';
+            customMarker.setAttribute('name', house.number);
+
+            const marker = new Marker(customMarker)
                 .setLngLat([Number(house.location.longitude), Number(house.location.latitude)])
                 .setPopup(houseLocationPopup)
                 .addTo(map);

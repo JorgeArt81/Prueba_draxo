@@ -7,7 +7,7 @@ import { getData } from '@/utilities';
 
 export const useHouseList = () => {
     const [houseList, sethouseList] = useState<Partial<ModernHouserResponse>>({});
-    const [listValues, setListValues] = useState([])
+    const [listValues, setListValues] = useState([] as House[])
 
     useEffect(() => {
         getHouses().then(data => {
@@ -33,7 +33,7 @@ export const useHouseList = () => {
         // a must be equal to b
         return 0;
     })
-    
+
 
     return {
         orderData,

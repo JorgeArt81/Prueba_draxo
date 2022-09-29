@@ -8,7 +8,6 @@ import { Loading } from './Loading';
 export const MapView = () => {
     const { isLoading, userLocation, locationsList } = useContext(PlacesContext);
     const { setMap, setMarkersHouse } = useContext(MapContext);
-
     const mapDiv = useRef<HTMLDivElement>(null);
 
     useLayoutEffect(() => {
@@ -16,14 +15,14 @@ export const MapView = () => {
             const map = new Map({
                 container: mapDiv.current!, // container ID
                 style: 'mapbox://styles/mapbox/streets-v11', // style URL
-                center: [userLocation?.longitude || -74.5, userLocation?.latitude || 40], // starting position [lng, lat]
-                zoom: 14, // starting zoom
+                center: [userLocation?.longitude || -122.48, userLocation?.latitude || 37.79], // starting position [lng, lat]
+                zoom: 12, // starting zoom
             });
-            setMap(map);
+            // setMap(map);
             setMarkersHouse(map, locationsList!)
         }
     }, [isLoading])
-    
+
     if (isLoading) {
         return (<Loading />);
     }
@@ -33,3 +32,4 @@ export const MapView = () => {
         </MapViewStyled>
     )
 }
+// 36.493699563995946, -119.64502982429563

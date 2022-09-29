@@ -23,6 +23,12 @@ export const HouseCardStyled = styled.div`
     }
   }
 
+  .card-button{
+    font-weight:var(--fw-bold);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
   /* Media query */
   ${customMediaQuery("max-width", "tablets")} {
     --padding-card: 5px;

@@ -7,10 +7,12 @@ interface Props {
     name_translations: string;
     url: string;
     building_end_date: string;
-    building_start_date: string
+    building_start_date: string;
+    handledClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 
 }
-export const HouseCard = ({ address, url, name_translations, number, name, building_start_date, building_end_date, }: Props) => {
+export const HouseCard = ({ address, url, name_translations, number, name, building_start_date, building_end_date, handledClick }: Props) => {
+
     return (
         <HouseCardStyled>
             <img src={url} alt={name_translations} />
@@ -18,7 +20,7 @@ export const HouseCard = ({ address, url, name_translations, number, name, build
                 <b>{`No.${number}, ${name} ${building_start_date}-${building_end_date}`}</b>
                 <p>{address}</p>
             </div>
-            <a>Ver</a>
+            <button className='card-button' onClick={handledClick}>Ver</button>
         </HouseCardStyled>
 
     )
