@@ -5,7 +5,6 @@ import { Icon } from './icons';
 
 export const Navigation = () => {
     const isActive = (props: { isActive: boolean, isPending: boolean }) => {
-        console.log(props)
         return props.isActive ? 'nav-active navlink' : 'navlink'
     };
     return (

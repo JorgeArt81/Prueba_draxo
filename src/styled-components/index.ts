@@ -1,4 +1,5 @@
 export * from './Header.styled';
+export * from './HouseCard.styled';
 export * from './Loading.styled';
 export * from './MapView.styled';
 export * from './NavBar.styled';

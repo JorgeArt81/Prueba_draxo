@@ -1,5 +1,6 @@
 export * from './BtnMyLocation';
 export * from './Header';
+export * from './HouseCard';
 export * from './Layout';
 export * from './Loading';
 export * from './MapView';

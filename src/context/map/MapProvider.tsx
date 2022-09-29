@@ -3,11 +3,12 @@ import { Map, Marker, Popup } from 'mapbox-gl';
 
 import { MapContext } from './MapContext';
 import { mapReducer } from './mapReducer';
-import { MapState } from '@/models';
+import { House, MapState } from '@/models';
 
 const INITIAL_STATE: MapState = {
     isMapReady: false,
     map: undefined,
+    markers: undefined,
 }
 
 interface Props {
@@ -18,7 +19,7 @@ export const MapProvider = ({ children }: Props) => {
 
     const myLocationPopup = new Popup()
         .setHTML(`
-            <h4>Casa en San Francisco</h4>
+            <h4>Mi ubi</h4>
         `);
 
     const setMap = (map: Map) => {
@@ -30,12 +31,31 @@ export const MapProvider = ({ children }: Props) => {
         dispatch({ type: 'setMap', payload: map });
     }
 
+    const setMarkersHouse = (map: Map, houseList: House[]) => {
+        const listMarkers = houseList.map(house => {
+            const houseLocationPopup = new Popup()
+                .setHTML(`
+            <h4>${house.number}}</h4>
+        `);
+
+            console.log([house.location.longitude, house.location.latitude])
+            const marker = new Marker()
+                .setLngLat([Number(house.location.longitude), Number(house.location.latitude)])
+                .setPopup(houseLocationPopup)
+                .addTo(map);
+
+            return marker;
+        })
+        dispatch({ type: 'setMarkersHouse', payload: listMarkers });
+    }
+
     return (
         <MapContext.Provider value={{
             ...state,
 
             // Methods
             setMap,
+            setMarkersHouse
         }}>
             {children}
         </MapContext.Provider>
